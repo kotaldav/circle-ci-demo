@@ -24,5 +24,7 @@ workflows:
       - build:
           name: build_image
       - aws-ecr/build-and-push-image:
+          requires: ["build_image"]
+          name: push_to_ecr
           repo: "go-demo-app"
           tag:  "123"

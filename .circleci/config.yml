@@ -4,7 +4,8 @@
 version: 2
 jobs:
   build:
-    executor: docker
+    docker:
+      - image: docker:19
     steps:
       - checkout
       - setup_remote_docker

@@ -15,6 +15,6 @@ jobs:
             docker build -t demoapp:latest .
 
 workflows:
-  build:
+  build_and_push:
     jobs:
       - build

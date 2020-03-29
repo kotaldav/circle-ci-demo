@@ -17,19 +17,12 @@ jobs:
           name: build docker image
           command: |
             docker build -t ${AWS_ECR_ACCOUNT_URL}/go-demo-app:123 .
-  push_image:
-    docker:
-      - image: docker:19
-    steps:
-      - aws-ecr/push-image:
-          repo: "go-demo-app"
-          tag: "123"
 
 workflows:
   build_and_push:
     jobs:
       - build:
           name: build_image
-      - push_image:
-          name: push_image_to_ecr
-          requires: ["build_image"]
+      - aws-ecr/build-and-push-image:
+          repo: "go-demo-app"
+          tag:  "123"

@@ -28,5 +28,8 @@ jobs:
 workflows:
   build_and_push:
     jobs:
-      - build
-      - push_image
+      - build:
+          name: build_image
+      - push_image:
+          name: push_image_to_ecr
+          requires: ["build_image"]

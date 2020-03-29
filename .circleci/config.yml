@@ -13,3 +13,8 @@ jobs:
           name: build docker image
           command: |
             docker build -t demoapp:latest .
+
+workflows:
+  build:
+    jobs:
+      - build

@@ -16,7 +16,7 @@ jobs:
       - run:
           name: build docker image
           command: |
-            docker build -t demoapp:latest .
+            docker build -t ${AWS_ECR_ACCOUNT_URL}/go-demo-app:123 .
   push_image:
     docker:
       - image: docker:19

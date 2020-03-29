@@ -4,6 +4,7 @@
 version: 2
 jobs:
   build:
+    executor: docker
     steps:
       - checkout
       - setup_remote_docker

@@ -1,8 +1,12 @@
-FROM golang:onbuild as builder
+FROM golang:alpine as builder
 
 WORKDIR /app
 
 ADD . .
+
+RUN apk update -qq && apk add git
+RUN go get github.com/go-sql-driver/mysql
+RUN go get github.com/gorilla/mux
 
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o goapp .
 
